@@ -31,6 +31,7 @@ module dmem #(
 
     // 读操作
     always @(*) begin
+        read_data = 0;  // 默认值
         if (mem_read) begin
             case (mem_op)
                 `MEM_LB:  // Load Byte (符号扩展)
@@ -54,8 +55,6 @@ module dmem #(
                 default:
                     read_data = 0;
             endcase
-        end else begin
-            read_data = 0;
         end
     end
 

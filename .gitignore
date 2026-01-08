@@ -1,5 +1,6 @@
 # 编译输出
 build/
+obj_dir/
 *.vvp
 *.vcd
 *.out

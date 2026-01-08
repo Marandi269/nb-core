@@ -23,7 +23,7 @@ module regfile (
 );
 
     // 32个64位寄存器
-    reg [`XLEN-1:0] regs [0:31];
+    reg [`XLEN-1:0] regs [0:31] /* verilator public */;
 
     // 读操作 (组合逻辑)
     always @(*) begin

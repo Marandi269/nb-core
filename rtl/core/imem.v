@@ -16,7 +16,7 @@ module imem #(
     localparam ADDR_WIDTH = $clog2(MEM_SIZE/4);  // 以字(4字节)为单位
 
     // 存储器数组
-    reg [31:0] mem [0:MEM_SIZE/4-1];
+    reg [31:0] mem [0:MEM_SIZE/4-1] /* verilator public */;
     integer i;
 
     // 地址对齐到4字节边界，并截取有效位

@@ -6,7 +6,7 @@
 module cpu_single_cycle (
     input  wire clk,
     input  wire rst_n
-);
+); /* verilator public_module */
 
     // PC相关信号
     wire [`XLEN-1:0] pc, pc_next;

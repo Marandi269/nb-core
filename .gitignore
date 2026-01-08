@@ -1,0 +1,34 @@
+# 编译输出
+build/
+*.vvp
+*.vcd
+*.out
+
+# 仿真文件
+sim/*.vcd
+sim/*.out
+*.log
+
+# FPGA综合输出
+fpga/build/
+*.bit
+*.bin
+*.json
+*.asc
+*.blif
+
+# 编辑器
+.vscode/
+.idea/
+*.swp
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# 工具链
+software/toolchain/riscv64-*/
+*.elf
+*.hex
+*.bin

@@ -9,6 +9,7 @@ module cpu_tb;
 
     reg clk;
     reg rst_n;
+    integer i;
 
     // 实例化CPU
     cpu_single_cycle uut (
@@ -69,7 +70,7 @@ module cpu_tb;
             uut.u_imem.mem[3] = 32'h40110233;
 
             // 地址16: AND x5, x1, x2   (x5 = 10 & 20 = 0)
-            uut.u_imem.mem[4] = 32'h002 0f2b3;
+            uut.u_imem.mem[4] = 32'h0020f2b3;
 
             // 地址20: OR x6, x1, x2    (x6 = 10 | 20 = 30)
             uut.u_imem.mem[5] = 32'h0020e333;
@@ -81,7 +82,6 @@ module cpu_tb;
             uut.u_imem.mem[7] = 32'h0020a433;
 
             // 其余填充NOP
-            integer i;
             for (i = 8; i < 2048; i = i + 1) begin
                 uut.u_imem.mem[i] = 32'h00000013;  // ADDI x0, x0, 0 (NOP)
             end

@@ -5,7 +5,7 @@
 `include "defines.v"
 
 module imem #(
-    parameter MEM_SIZE = 8192  // 8KB指令存储器
+    parameter MEM_SIZE = 256  // 256B指令存储器（仿真测试用）
 )(
     input  wire                clk,
     input  wire [`XLEN-1:0]   addr,      // 地址
@@ -17,6 +17,7 @@ module imem #(
 
     // 存储器数组
     reg [31:0] mem [0:MEM_SIZE/4-1];
+    integer i;
 
     // 地址对齐到4字节边界，并截取有效位
     wire [ADDR_WIDTH-1:0] word_addr;
@@ -27,17 +28,16 @@ module imem #(
         inst <= mem[word_addr];
     end
 
-    // 初始化（用于测试）
-    initial begin
-        // 可以从文件加载程序
-        // $readmemh("program.hex", mem);
-
-        // 或者默认填充NOP (ADDI x0, x0, 0)
-        integer i;
-        for (i = 0; i < MEM_SIZE/4; i = i + 1) begin
-            mem[i] = 32'h00000013;  // NOP
-        end
-    end
+    // 初始化（用于测试）- 注释掉加快编译
+    // initial begin
+    //     // 可以从文件加载程序
+    //     // $readmemh("program.hex", mem);
+    //
+    //     // 或者默认填充NOP (ADDI x0, x0, 0)
+    //     for (i = 0; i < MEM_SIZE/4; i = i + 1) begin
+    //         mem[i] = 32'h00000013;  // NOP
+    //     end
+    // end
 
     // 支持外部加载程序（用于testbench）
     task load_program;

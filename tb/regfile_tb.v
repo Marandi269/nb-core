@@ -12,6 +12,7 @@ module regfile_tb;
     reg rd_wen;
     reg [`XLEN-1:0] rd_data;
     wire [`XLEN-1:0] rs1_data, rs2_data;
+    integer i;
 
     // 实例化寄存器文件
     regfile uut (
@@ -100,7 +101,6 @@ module regfile_tb;
 
         // 测试4: 写入所有寄存器
         $display("[TEST] Writing all registers");
-        integer i;
         for (i = 1; i < 32; i = i + 1) begin
             rd_addr = i;
             rd_data = i * 64'h0101_0101_0101_0101;

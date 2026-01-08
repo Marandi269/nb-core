@@ -5,7 +5,7 @@
 `include "defines.v"
 
 module dmem #(
-    parameter MEM_SIZE = 65536  // 64KB数据存储器
+    parameter MEM_SIZE = 256  // 256B数据存储器（仿真测试用）
 )(
     input  wire                clk,
     input  wire                rst_n,
@@ -95,13 +95,13 @@ module dmem #(
         end
     end
 
-    // 初始化
-    integer i;
-    initial begin
-        for (i = 0; i < MEM_SIZE; i = i + 1) begin
-            mem[i] = 8'h00;
-        end
-    end
+    // 初始化 - 注释掉加快编译
+    // integer i;
+    // initial begin
+    //     for (i = 0; i < MEM_SIZE; i = i + 1) begin
+    //         mem[i] = 8'h00;
+    //     end
+    // end
 
     `ifdef DEBUG
     always @(posedge clk) begin

@@ -1,35 +1,29 @@
-# 编译输出
-build/
-obj_dir/
-*.vvp
-*.vcd
+# 编译产物
+*.o
 *.out
-
-# 仿真文件
-sim/*.vcd
-sim/*.out
-*.log
-
-# FPGA综合输出
-fpga/build/
-*.bit
+*.elf
 *.bin
-*.json
-*.asc
-*.blif
+*.dump
+*.vcd
 
-# 编辑器
-.vscode/
-.idea/
+# Verilator生成文件
+sim/verilator/obj_dir/
+
+# 软件子仓库（外部依赖）
+software/xv6-riscv/
+software/linux/
+software/busybox/
+software/opensbi/
+
+# 临时文件
 *.swp
+*.swo
 *~
 
-# OS
-.DS_Store
-Thumbs.db
+# IDE配置
+.vscode/
+.idea/
 
-# 工具链
-software/toolchain/riscv64-*/
-*.elf
-*.hex
-*.bin
+# 构建目录
+build/
+*.log

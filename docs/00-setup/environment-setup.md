@@ -79,7 +79,13 @@
 - GTKWave: 查看仿真波形文件(.vcd)
 - Icarus Verilog: 备用仿真器（较慢）
 
-### 4. FPGA工具链（ULX3S-ECP5开发板）
+### 4. FPGA工具链
+
+项目支持两种 FPGA 平台，选择其一即可：
+
+#### 选项A：Lattice ECP5（开源工具链）⭐ 推荐学习
+
+**目标开发板**: ULX3S-85F
 
 | 工具 | 用途 | 最低版本 | 必需性 |
 |------|------|----------|--------|
@@ -88,13 +94,37 @@
 | **prjtrellis** | ECP5 FPGA数据库 | 最新版 | ✅ 必需 |
 | **openFPGALoader** | 烧录工具 | 0.11+ | ✅ 必需 |
 
-**说明**:
-- Yosys: 将Verilog代码转换为网表
-- nextpnr-ecp5: 针对Lattice ECP5 FPGA的布局布线
-- prjtrellis: 提供ECP5芯片的数据库和工具
-- openFPGALoader: 通过USB将比特流烧录到FPGA
+**优势**:
+- ✅ 完全开源，安装简单（一行命令）
+- ✅ 资源足够（84K LUTs，运行 Linux 没问题）
+- ✅ 纯 CLI 工作流程
+- ✅ 学习 FPGA 底层原理
 
-**重要**: nextpnr-ecp5和prjtrellis可能需要从源码编译，编译时间约10-20分钟
+**劣势**:
+- ⚠️ 工具链成熟度不如 Vivado
+- ⚠️ nextpnr 编译需要 10-20 分钟
+
+#### 选项B：Xilinx Artix-7（商业工具链）
+
+**目标开发板**: PA200T-starlite (XC7A200T)
+
+| 工具 | 用途 | 版本 | 大小 |
+|------|------|------|------|
+| **Vivado ML WebPACK** | 综合/布局/布线/烧录 | 2023.2+ | 35-50GB |
+
+**优势**:
+- ✅ 资源非常大（134K LUTs，远超需求）
+- ✅ 工具成熟，时序优化好
+- ✅ 支持 CLI 模式（Tcl 脚本）
+- ✅ 工业界标准
+
+**劣势**:
+- ❌ 闭源，安装复杂（需要注册账号）
+- ❌ 占用磁盘空间大（~70GB）
+- ❌ 需要许可证（WebPACK 免费但需联网激活）
+- ❌ 环境污染（需要 source 配置）
+
+**详细安装指南**: [Vivado 安装指南](../02-fpga/vivado-setup.md)
 
 ### 5. USB设备权限配置
 

@@ -27,3 +27,4 @@ software/opensbi/
 # 构建目录
 build/
 *.log
+obj_dir/

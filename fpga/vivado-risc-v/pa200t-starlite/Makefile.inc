@@ -1,0 +1,10 @@
+# PA200T-StarLite Board Configuration
+# XC7A200T-2FBG484I with 1GB DDR3 (2x MT41K256M16TW)
+
+BOARD_PART  ?= 
+XILINX_PART ?= xc7a200tfbg484-2
+CFG_DEVICE  ?= SPIx4 -size 128
+CFG_PART    ?= w25q128-spi-x1_x2_x4
+MEMORY_SIZE ?= 0x40000000
+
+# 1GB DDR3 memory

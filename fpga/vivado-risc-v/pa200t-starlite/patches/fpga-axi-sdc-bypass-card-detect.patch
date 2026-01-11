@@ -1,0 +1,20 @@
+--- a/drivers/mmc/host/fpga-axi-sdc.c
++++ b/drivers/mmc/host/fpga-axi-sdc.c
+@@ -322,10 +322,15 @@ static void sdc_card_reset(struct mmc_host * mmc) {
+ }
+ 
+ static int sdc_get_cd(struct mmc_host * mmc) {
++    /* Always report card present - CD hardware not reliable on PA200T-StarLite
++     * The card_detect register reports 0x9 (REMOVE_INT_REQ set) even when card is inserted.
++     * This is likely because the SD slot has no physical card detect switch,
++     * or the FPGA IP doesn't properly connect the CD signal. */
++    return 1;
++#if 0  /* Original code disabled */
+     struct sdc_host * host = mmc_priv(mmc);
+     uint32_t card_detect = host->regs->card_detect;
+     if (card_detect == 0) return 1; /* Card detect not supported */
+     return (card_detect & SDC_CARD_INSERT_INT_REQ) != 0;
++#endif
+ }
+ 
+ static irqreturn_t sdc_isr(int irq, void * dev_id) {
